@@ -1,0 +1,25 @@
+module ce_tb;
+  reg x;
+  reg clk,reset;
+  wire [1:0]y;
+  ce a1(x,clk,reset,y);
+  always #5 clk=~clk;
+  initial
+  begin
+  clk=1;
+  end
+  initial
+  begin //Test message bit : 101001011
+  #10 reset=1;x=1;
+  #10 reset=0;x=1;
+  #10 reset=0;x=0;
+  #10 reset=0;x=1;
+  #10 reset=0;x=0;
+  #10 reset=0;x=0;
+  #10 reset=0;x=1;
+  #10 reset=0;x=0;
+  #10 reset=0;x=1;
+  #10 $finish;
+  end
+  endmodule 
+
